@@ -6,7 +6,9 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
+  /* Dark theme (default) */
+  :root,
+  .dark-mode {
     --background: 222 47% 11%;
     --foreground: 214 32% 91%;
 
@@ -37,28 +39,72 @@
 
     --radius: 0.75rem;
   }
+
+  /* Light theme */
+  .light-mode {
+    --background: 0 0% 98%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 98%;
+    --popover-foreground: 222 47% 11%;
+
+    --primary: 252 94% 67%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 222 47% 11%;
+
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 8% 46%;
+
+    --accent: 220 14% 96%;
+    --accent-foreground: 222 47% 11%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 224 76% 48%;
+  }
 }
 
 @layer base {
   * {
-    @apply border-border;
+    @apply border-border transition-colors duration-200;
   }
 
   body {
-    @apply bg-bg-dark text-foreground font-sans min-h-screen;
+    @apply bg-background text-foreground font-sans min-h-screen;
+  }
+
+  .dark-mode body {
     background-image: 
       radial-gradient(circle at 25% 25%, rgba(139, 92, 246, 0.05) 0%, transparent 50%),
       radial-gradient(circle at 75% 75%, rgba(217, 70, 239, 0.05) 0%, transparent 50%);
   }
 
+  .light-mode body {
+    background-image: 
+      radial-gradient(circle at 25% 25%, rgba(139, 92, 246, 0.025) 0%, transparent 50%),
+      radial-gradient(circle at 75% 75%, rgba(217, 70, 239, 0.025) 0%, transparent 50%);
+  }
+
   ::selection {
-    @apply bg-web3-purple/30 text-white;
+    @apply bg-web3-purple/30 text-foreground;
   }
 }
 
 @layer components {
   .glass {
     @apply bg-secondary/40 backdrop-blur-xl border border-white/10 shadow-md;
+  }
+  
+  .light-mode .glass {
+    @apply bg-white/60 backdrop-blur-xl border border-black/5 shadow-md;
   }
   
   .glow-border {
@@ -75,5 +121,81 @@
   
   .shimmer {
     @apply relative overflow-hidden before:absolute before:inset-0 before:-translate-x-full before:animate-shimmer before:bg-gradient-to-r before:from-transparent before:via-white/10 before:to-transparent;
+  }
+  
+  .light-mode .shimmer {
+    @apply before:via-black/5;
+  }
+
+  /* Animation classes */
+  .fade-in {
+    @apply animate-fade-in;
+  }
+  
+  .slide-up {
+    @apply animate-slide-up;
+  }
+  
+  .slide-in {
+    @apply animate-slide-in;
+  }
+  
+  .zoom-in {
+    @apply animate-zoom-in;
+  }
+  
+  .bounce {
+    @apply animate-bounce;
+  }
+  
+  .pulse {
+    @apply animate-pulse;
+  }
+  
+  /* Hover effects */
+  .hover-lift {
+    @apply transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg;
+  }
+  
+  .hover-glow {
+    @apply transition-all duration-300 hover:shadow-glow;
+  }
+}
+
+@keyframes fade-in {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes slide-up {
+  0% { transform: translateY(20px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slide-in {
+  0% { transform: translateX(-20px); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes zoom-in {
+  0% { transform: scale(0.95); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@layer utilities {
+  .animation-delay-100 {
+    animation-delay: 100ms;
+  }
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+  .animation-delay-300 {
+    animation-delay: 300ms;
+  }
+  .animation-delay-400 {
+    animation-delay: 400ms;
+  }
+  .animation-delay-500 {
+    animation-delay: 500ms;
   }
 }

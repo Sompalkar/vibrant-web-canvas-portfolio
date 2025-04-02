@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -52,14 +53,16 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
-				// Web3 themed colors
+				// Web3 themed colors - updated with more vibrant options
 				web3: {
-					purple: '#7E22CE',
+					purple: '#8B5CF6', // Updated to a brighter purple
 					pink: '#EC4899',
-					blue: '#0EA5E9',
+					blue: '#3B82F6', // Updated to a brighter blue
 					teal: '#14B8A6',
 					green: '#10B981',
 					neon: '#22D3EE',
+					orange: '#F97316', // Added vibrant orange
+					yellow: '#FBBF24', // Added vibrant yellow
 				},
 				// Custom background for gradients
 				'bg-dark': '#0D1117',
@@ -74,8 +77,10 @@ export default {
 				mono: ['JetBrains Mono', 'monospace'],
 			},
 			boxShadow: {
-				glow: '0 0 20px rgba(126, 34, 206, 0.5)',
-				'glow-lg': '0 0 30px rgba(126, 34, 206, 0.6)',
+				glow: '0 0 20px rgba(139, 92, 246, 0.5)', // Updated glow color
+				'glow-lg': '0 0 30px rgba(139, 92, 246, 0.6)',
+				'glow-pink': '0 0 20px rgba(236, 72, 153, 0.5)', // Added pink glow
+				'glow-blue': '0 0 20px rgba(59, 130, 246, 0.5)', // Added blue glow
 			},
 			keyframes: {
 				'accordion-down': {
@@ -123,8 +128,18 @@ export default {
 					'100%': { transform: 'rotate(360deg)' },
 				},
 				'pulse-glow': {
-					'0%, 100%': { boxShadow: '0 0 20px rgba(126, 34, 206, 0.5)' },
-					'50%': { boxShadow: '0 0 30px rgba(126, 34, 206, 0.8)' },
+					'0%, 100%': { boxShadow: '0 0 20px rgba(139, 92, 246, 0.5)' },
+					'50%': { boxShadow: '0 0 30px rgba(139, 92, 246, 0.8)' },
+				},
+				'bounce-slight': {
+					'0%, 100%': { transform: 'translateY(0)' },
+					'50%': { transform: 'translateY(-5px)' },
+				},
+				'blob': {
+					'0%, 100%': { borderRadius: '60% 40% 30% 70% / 60% 30% 70% 40%' },
+					'25%': { borderRadius: '30% 60% 70% 40% / 50% 60% 30% 60%' },
+					'50%': { borderRadius: '50% 60% 30% 70% / 30% 40% 70% 60%' },
+					'75%': { borderRadius: '60% 40% 70% 30% / 70% 30% 50% 40%' }
 				},
 			},
 			animation: {
@@ -140,12 +155,15 @@ export default {
 				'float-slow': 'float-slow 6s ease-in-out infinite',
 				'rotate-slow': 'rotate-slow 12s linear infinite',
 				'pulse-glow': 'pulse-glow 3s ease-in-out infinite',
+				'bounce-slight': 'bounce-slight 2s ease-in-out infinite',
+				'blob': 'blob 8s ease-in-out infinite',
 			},
 			backgroundImage: {
 				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-				'hero-gradient': 'linear-gradient(to right, rgba(139, 92, 246, 0.15), rgba(217, 70, 239, 0.15), rgba(14, 165, 233, 0.15))',
-				'web3-gradient': 'linear-gradient(to right, rgba(126, 34, 206, 0.2), rgba(236, 72, 153, 0.2), rgba(14, 165, 233, 0.2))',
-				'web3-glow': 'radial-gradient(circle, rgba(126, 34, 206, 0.2) 0%, rgba(126, 34, 206, 0.05) 70%, transparent 100%)',
+				'hero-gradient': 'linear-gradient(to right, rgba(139, 92, 246, 0.15), rgba(236, 72, 153, 0.15), rgba(59, 130, 246, 0.15))',
+				'web3-gradient': 'linear-gradient(to right, rgba(139, 92, 246, 0.2), rgba(236, 72, 153, 0.2), rgba(59, 130, 246, 0.2))',
+				'web3-glow': 'radial-gradient(circle, rgba(139, 92, 246, 0.2) 0%, rgba(139, 92, 246, 0.05) 70%, transparent 100%)',
+				'cyber-grid': 'linear-gradient(rgba(139, 92, 246, 0.1) 1px, transparent 1px), linear-gradient(to right, rgba(139, 92, 246, 0.1) 1px, transparent 1px)',
 			},
 		}
 	},

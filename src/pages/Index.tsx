@@ -8,10 +8,16 @@ import Experience from "@/components/Experience";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import BackToTop from "@/components/BackToTop";
+import { motion } from "framer-motion";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <motion.div 
+      className="min-h-screen bg-background"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+    >
       <Navbar />
       <Hero />
       <About />
@@ -21,7 +27,7 @@ const Index = () => {
       <Contact />
       <Footer />
       <BackToTop />
-    </div>
+    </motion.div>
   );
 };
 

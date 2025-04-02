@@ -1,8 +1,8 @@
 
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { useInView } from "framer-motion";
-import { BriefcaseBusiness, Calendar, GraduationCap, Award } from "lucide-react";
+import { BriefcaseBusiness, Calendar, GraduationCap, Award, Star, Coffee, Sparkles } from "lucide-react";
 
 const experiences = [
   {
@@ -11,7 +11,8 @@ const experiences = [
     date: "2022 - Present",
     description: "Leading frontend development for decentralized applications. Implementing responsive UI with React, TypeScript, and Web3 libraries.",
     icon: BriefcaseBusiness,
-    type: "work"
+    type: "work",
+    achievements: ["Led team of 5 developers", "Improved app performance by 40%", "Implemented CI/CD pipeline"]
   },
   {
     title: "Frontend Developer",
@@ -19,7 +20,8 @@ const experiences = [
     date: "2020 - 2022",
     description: "Developed modern web applications using React and NextJS. Collaborated with UX designers to create intuitive interfaces.",
     icon: BriefcaseBusiness,
-    type: "work"
+    type: "work",
+    achievements: ["Built 20+ responsive websites", "Mentored junior developers", "Reduced load time by 30%"]
   },
   {
     title: "Master's in Computer Science",
@@ -27,7 +29,8 @@ const experiences = [
     date: "2018 - 2020",
     description: "Specialized in User Experience and Frontend Development. Thesis on improving website accessibility through AI.",
     icon: GraduationCap,
-    type: "education"
+    type: "education",
+    achievements: ["GPA: 3.9/4.0", "Published 2 research papers", "Won Best Student Project Award"]
   },
   {
     title: "Web Development Bootcamp",
@@ -35,7 +38,8 @@ const experiences = [
     date: "2018",
     description: "Intensive 12-week bootcamp focusing on JavaScript, React, and modern frontend technologies.",
     icon: Award,
-    type: "education"
+    type: "education",
+    achievements: ["Graduated top of class", "Built 5 full-stack projects", "Selected for mentorship program"]
   },
   {
     title: "Junior Developer",
@@ -43,14 +47,32 @@ const experiences = [
     date: "2017 - 2018",
     description: "Built and maintained responsive websites. Implemented designs using HTML, CSS, and JavaScript.",
     icon: BriefcaseBusiness,
-    type: "work"
+    type: "work",
+    achievements: ["Developed company website from scratch", "Implemented responsive design system", "Created internal tools"]
   },
 ];
+
+const Achievement = ({ achievement }: { achievement: string }) => (
+  <div className="flex items-center text-xs text-muted-foreground mt-1.5">
+    <Sparkles className="h-3 w-3 text-web3-yellow mr-1.5" />
+    <span>{achievement}</span>
+  </div>
+);
 
 const TimelineItem = ({ experience, index }: { experience: any; index: number }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.3 });
   const isEven = index % 2 === 0;
+  
+  // More dynamic animations
+  const itemRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: itemRef,
+    offset: ["start end", "end start"]
+  });
+  
+  const scale = useTransform(scrollYProgress, [0, 0.5], [0.95, 1]);
+  const opacity = useTransform(scrollYProgress, [0, 0.3], [0.5, 1]);
 
   return (
     <motion.div 
@@ -69,21 +91,33 @@ const TimelineItem = ({ experience, index }: { experience: any; index: number })
         />
       </div>
       
-      <div className={`w-full md:w-5/12 pl-6 md:pl-0 ${isEven ? 'md:pr-12' : 'md:pl-12'}`}>
+      <motion.div 
+        ref={itemRef}
+        className={`w-full md:w-5/12 pl-6 md:pl-0 ${isEven ? 'md:pr-12' : 'md:pl-12'}`}
+        style={{ scale, opacity }}
+      >
         <motion.div 
-          className="glass p-6 rounded-lg hover-lift"
-          whileHover={{ y: -5, boxShadow: "0 10px 25px -5px rgba(126, 34, 206, 0.3)" }}
+          className="glass p-6 rounded-lg card-hover relative overflow-hidden"
+          whileHover={{ 
+            y: -5, 
+            boxShadow: "0 10px 25px -5px rgba(139, 92, 246, 0.3)"
+          }}
         >
-          <div className="flex items-center mb-2">
+          {/* Background glow effect */}
+          <div className="absolute -top-10 -right-10 w-20 h-20 bg-web3-purple/20 rounded-full blur-2xl"></div>
+          
+          <div className="flex items-center mb-3">
             <div className="p-2 rounded-full bg-web3-purple/10 mr-3">
               <experience.icon className="h-5 w-5 text-web3-purple" />
             </div>
             <h3 className="font-bold text-lg">{experience.title}</h3>
           </div>
           
-          <div className="mb-2">
+          <div className="mb-3">
             <div className="text-sm text-muted-foreground flex items-center">
-              <span className="font-medium text-web3-pink">{experience.company}</span>
+              <span className={`font-medium ${experience.type === 'work' ? 'text-web3-pink' : 'text-web3-blue'}`}>
+                {experience.company}
+              </span>
             </div>
             <div className="text-xs text-muted-foreground flex items-center mt-1">
               <Calendar className="h-3 w-3 mr-1" />
@@ -91,9 +125,16 @@ const TimelineItem = ({ experience, index }: { experience: any; index: number })
             </div>
           </div>
           
-          <p className="text-sm text-muted-foreground">{experience.description}</p>
+          <p className="text-sm text-muted-foreground mb-3">{experience.description}</p>
+          
+          {/* Achievements section */}
+          <div className="mt-3 space-y-1">
+            {experience.achievements.map((achievement: string, i: number) => (
+              <Achievement key={i} achievement={achievement} />
+            ))}
+          </div>
         </motion.div>
-      </div>
+      </motion.div>
     </motion.div>
   );
 };
@@ -103,8 +144,11 @@ const Experience = () => {
   const isInView = useInView(ref, { once: true, amount: 0.1 });
 
   return (
-    <section id="experience" className="section-padding" ref={ref}>
-      <div className="container">
+    <section id="experience" className="section-padding relative" ref={ref}>
+      {/* Background elements */}
+      <div className="absolute inset-0 cyber-grid opacity-10 z-0"></div>
+      
+      <div className="container relative z-10">
         <motion.div 
           className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}

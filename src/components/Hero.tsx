@@ -1,6 +1,6 @@
 
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Github, Twitter, Linkedin, MousePointer } from "lucide-react";
+import { ArrowRight, Github, Twitter, Linkedin, MousePointer, ExternalLink } from "lucide-react";
 import { motion } from "framer-motion";
 
 const Hero = () => {
@@ -37,6 +37,9 @@ const Hero = () => {
 
   return (
     <section id="home" className="section-padding pt-32 md:pt-40 min-h-screen flex flex-col justify-center relative overflow-hidden">
+      {/* Cyber grid background */}
+      <div className="absolute inset-0 cyber-grid opacity-30 z-0"></div>
+      
       {/* Decorative elements */}
       <motion.div
         variants={floatingElements}
@@ -44,21 +47,22 @@ const Hero = () => {
         animate="show"
         className="absolute inset-0 pointer-events-none"
       >
+        {/* Blob elements with updated animations */}
         <motion.div 
           variants={floatingItem}
-          className="absolute top-1/4 right-[15%] w-20 h-20 bg-web3-purple/5 rounded-full backdrop-blur-3xl animate-float-slow"
+          className="absolute top-1/4 right-[15%] w-20 h-20 bg-web3-purple/10 rounded-full backdrop-blur-3xl blob"
         />
         <motion.div 
           variants={floatingItem}
-          className="absolute bottom-1/3 left-[10%] w-32 h-32 bg-web3-pink/5 rounded-full backdrop-blur-3xl animate-float-slow animation-delay-300"
+          className="absolute bottom-1/3 left-[10%] w-32 h-32 bg-web3-pink/10 rounded-full backdrop-blur-3xl blob animation-delay-300"
         />
         <motion.div 
           variants={floatingItem}
-          className="absolute bottom-1/4 right-[20%] w-16 h-16 bg-web3-blue/5 rounded-full backdrop-blur-3xl animate-float-slow animation-delay-500"
+          className="absolute bottom-1/4 right-[20%] w-24 h-24 bg-web3-blue/10 rounded-full backdrop-blur-3xl blob animation-delay-500"
         />
         <motion.div 
           variants={floatingItem}
-          className="absolute top-1/3 left-[20%] w-24 h-24 bg-web3-neon/5 rounded-full backdrop-blur-3xl animate-rotate-slow"
+          className="absolute top-1/3 left-[20%] w-28 h-28 bg-web3-orange/10 rounded-full backdrop-blur-3xl blob animation-delay-200"
         />
       </motion.div>
 
@@ -71,7 +75,10 @@ const Hero = () => {
         >
           <motion.div variants={item}>
             <div className="glass px-4 py-2 w-fit rounded-full mb-4 hover-lift animate-pulse-glow">
-              <p className="text-sm font-medium">Available for freelance work</p>
+              <p className="text-sm font-medium flex items-center">
+                <span className="inline-block w-2 h-2 bg-web3-green rounded-full mr-2 animate-pulse"></span>
+                Available for freelance work
+              </p>
             </div>
           </motion.div>
           
@@ -94,13 +101,14 @@ const Hero = () => {
             className="flex flex-col sm:flex-row gap-4 pt-4"
             variants={item}
           >
-            <Button className="bg-gradient-to-r from-web3-purple to-web3-pink hover:shadow-glow-lg group transition-all duration-300">
+            <Button className="bg-gradient-to-r from-web3-purple to-web3-blue hover:shadow-glow-lg group transition-all duration-300">
               View My Work
               <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
             </Button>
             
-            <Button variant="outline" className="border-web3-purple/30 hover:border-web3-purple hover:bg-web3-purple/10 transition-all duration-300">
+            <Button variant="outline" className="border-web3-purple/30 hover:border-web3-purple hover:bg-web3-purple/10 transition-all duration-300 group">
               Download Resume
+              <ExternalLink className="ml-2 h-4 w-4 opacity-70 group-hover:opacity-100" />
             </Button>
           </motion.div>
           
@@ -112,10 +120,10 @@ const Hero = () => {
               href="https://github.com" 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="p-2 rounded-full glass hover-glow group"
+              className="p-2 rounded-full glass hover-glow-blue group"
               aria-label="GitHub Profile"
             >
-              <Github className="h-5 w-5 group-hover:text-web3-purple transition-colors" />
+              <Github className="h-5 w-5 group-hover:text-web3-blue transition-colors" />
             </a>
             <a 
               href="https://twitter.com" 
@@ -124,16 +132,16 @@ const Hero = () => {
               className="p-2 rounded-full glass hover-glow group"
               aria-label="Twitter Profile"
             >
-              <Twitter className="h-5 w-5 group-hover:text-web3-pink transition-colors" />
+              <Twitter className="h-5 w-5 group-hover:text-web3-purple transition-colors" />
             </a>
             <a 
               href="https://linkedin.com" 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="p-2 rounded-full glass hover-glow group"
+              className="p-2 rounded-full glass hover-glow-pink group"
               aria-label="LinkedIn Profile"
             >
-              <Linkedin className="h-5 w-5 group-hover:text-web3-blue transition-colors" />
+              <Linkedin className="h-5 w-5 group-hover:text-web3-pink transition-colors" />
             </a>
           </motion.div>
         </motion.div>

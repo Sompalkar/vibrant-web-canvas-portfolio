@@ -3,13 +3,14 @@ import { useState, useRef } from 'react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ExternalLink, Github, Code } from "lucide-react";
+import { ExternalLink, Github, Code, ArrowRight } from "lucide-react";
 import { projects } from '@/utils/data';
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 
 const Projects = () => {
   const [filter, setFilter] = useState<string | null>(null);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.1 });
   
@@ -41,8 +42,11 @@ const Projects = () => {
   };
 
   return (
-    <section id="projects" className="section-padding" ref={ref}>
-      <div className="container">
+    <section id="projects" className="section-padding relative" ref={ref}>
+      {/* Background elements */}
+      <div className="absolute inset-0 cyber-grid opacity-10 z-0"></div>
+      
+      <div className="container relative z-10">
         <motion.div 
           className="text-center mb-12"
           initial={{ opacity: 0, y: 20 }}
@@ -66,7 +70,7 @@ const Projects = () => {
         >
           <Button 
             variant={!filter ? "default" : "outline"}
-            className={!filter ? "bg-web3-purple hover:bg-web3-purple/90 hover-lift" : "border-web3-purple/30 hover-lift"}
+            className={!filter ? "bg-gradient-to-r from-web3-purple to-web3-pink hover:from-web3-purple/90 hover:to-web3-pink/90 hover-lift" : "border-web3-purple/30 hover:border-web3-purple hover-lift"}
             onClick={() => setFilter(null)}
           >
             All
@@ -76,7 +80,7 @@ const Projects = () => {
             <Button 
               key={category}
               variant={filter === category ? "default" : "outline"}
-              className={filter === category ? "bg-web3-purple hover:bg-web3-purple/90 hover-lift" : "border-web3-purple/30 hover-lift"}
+              className={filter === category ? "bg-gradient-to-r from-web3-purple to-web3-pink hover:from-web3-purple/90 hover:to-web3-pink/90 hover-lift" : "border-web3-purple/30 hover:border-web3-purple hover-lift"}
               onClick={() => setFilter(category)}
             >
               {category}
@@ -86,20 +90,50 @@ const Projects = () => {
         
         {/* Projects Grid */}
         <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           variants={container}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
         >
           {filteredProjects.map((project, index) => (
-            <motion.div key={project.id} variants={item} custom={index}>
-              <Card className="glass hover:shadow-glow transition-all duration-300 group overflow-hidden border-white/5 hover:border-web3-purple/30">
+            <motion.div 
+              key={project.id} 
+              variants={item} 
+              custom={index}
+              onHoverStart={() => setHoveredIndex(index)}
+              onHoverEnd={() => setHoveredIndex(null)}
+              whileHover={{ y: -8, transition: { duration: 0.2 } }}
+            >
+              <Card className="glass hover:shadow-glow transition-all duration-300 group overflow-hidden border-white/5 hover:border-web3-purple/30 h-full flex flex-col">
                 <div className="relative overflow-hidden h-48">
                   <div className="w-full h-full bg-gradient-to-br from-web3-purple/20 to-web3-blue/20 absolute z-10"></div>
+                  
+                  {/* Animated overlay on hover */}
+                  <motion.div 
+                    className="absolute inset-0 bg-gradient-to-r from-web3-purple/70 to-web3-pink/70 z-20 flex items-center justify-center"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: hoveredIndex === index ? 1 : 0 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <motion.div
+                      initial={{ scale: 0.8, opacity: 0 }}
+                      animate={{ 
+                        scale: hoveredIndex === index ? 1 : 0.8,
+                        opacity: hoveredIndex === index ? 1 : 0
+                      }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <Button variant="secondary" size="sm" className="bg-background/80 backdrop-blur-md">
+                        View Details
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </Button>
+                    </motion.div>
+                  </motion.div>
+                  
                   <img 
                     src={project.imageUrl} 
                     alt={project.title}
-                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                    className="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-700"
                   />
                 </div>
                 
@@ -111,7 +145,7 @@ const Projects = () => {
                   <CardDescription>{project.description}</CardDescription>
                 </CardHeader>
                 
-                <CardContent>
+                <CardContent className="flex-grow">
                   <div className="flex flex-wrap gap-2">
                     {project.tags.map((tag) => (
                       <Badge key={tag} variant="outline" className="border-web3-purple/30 bg-web3-purple/10">

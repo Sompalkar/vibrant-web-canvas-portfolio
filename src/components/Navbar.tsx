@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
-import { Menu, X, Sun, Moon } from 'lucide-react';
+import { Menu, X, Sun, Moon, Code } from 'lucide-react';
 import { useTheme } from '@/contexts/ThemeContext';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -28,6 +28,17 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const logoVariants = {
+    hover: {
+      scale: 1.05,
+      transition: { duration: 0.2 }
+    },
+    tap: {
+      scale: 0.95,
+      transition: { duration: 0.1 }
+    }
+  };
+
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       isScrolled || isMobileMenuOpen ? 'glass backdrop-blur-lg py-3' : 'py-5'
@@ -35,11 +46,17 @@ const Navbar = () => {
       <div className="container flex justify-between items-center">
         <motion.a 
           href="#" 
-          className="text-xl md:text-2xl font-bold"
+          className="text-xl md:text-2xl font-bold flex items-center"
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5 }}
+          whileHover="hover"
+          whileTap="tap"
+          variants={logoVariants}
         >
+          <span className="mr-2 bg-gradient-to-br from-web3-purple to-web3-blue p-1.5 rounded text-white">
+            <Code size={18} />
+          </span>
           <span className="text-gradient">Portfolio</span><span className="text-web3-purple">.</span>
         </motion.a>
         
@@ -53,6 +70,7 @@ const Navbar = () => {
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3, delay: 0.1 * index }}
+              whileHover={{ y: -2 }}
             >
               {link.name}
             </motion.a>
@@ -72,6 +90,8 @@ const Navbar = () => {
               onClick={toggleTheme}
               className="hover:bg-primary/10 relative overflow-hidden"
               aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+              whileHover={{ scale: 1.1, rotate: 5 }}
+              whileTap={{ scale: 0.9 }}
             >
               <AnimatePresence mode="wait">
                 {theme === 'dark' ? (
@@ -82,7 +102,7 @@ const Navbar = () => {
                     exit={{ rotate: 90, opacity: 0 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <Sun className="h-5 w-5" />
+                    <Sun className="h-5 w-5 text-web3-yellow" />
                   </motion.div>
                 ) : (
                   <motion.div
@@ -92,7 +112,7 @@ const Navbar = () => {
                     exit={{ rotate: -90, opacity: 0 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <Moon className="h-5 w-5" />
+                    <Moon className="h-5 w-5 text-web3-blue" />
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -111,6 +131,8 @@ const Navbar = () => {
               size="icon" 
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="hover:bg-primary/10"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
             >
               <AnimatePresence mode="wait">
                 {isMobileMenuOpen ? (
@@ -160,6 +182,7 @@ const Navbar = () => {
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.3, delay: 0.05 * index }}
+                  whileHover={{ x: 5, color: "#8B5CF6" }}
                 >
                   {link.name}
                 </motion.a>

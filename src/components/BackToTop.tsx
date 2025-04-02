@@ -44,16 +44,16 @@ const BackToTop = () => {
             <Button
               onClick={scrollToTop}
               size="icon"
-              className="rounded-full glass border-web3-purple/30 hover:border-web3-purple bg-gradient-to-r from-web3-purple/80 to-web3-pink/80 backdrop-blur-lg shadow-glow"
+              className="rounded-full glass border-web3-purple/30 hover:border-web3-purple/70 bg-gradient-to-r from-web3-purple/80 to-web3-blue/80 backdrop-blur-lg shadow-glow"
               aria-label="Back to top"
             >
               <motion.div
                 animate={{ 
-                  y: [0, -2, 0, 2, 0],
+                  y: [0, -3, 0, 3, 0],
                 }}
                 transition={{ 
                   repeat: Infinity, 
-                  duration: 2,
+                  duration: 1.5,
                   ease: "easeInOut"
                 }}
               >

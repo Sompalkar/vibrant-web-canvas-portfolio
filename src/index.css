@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
 @tailwind base;
@@ -17,7 +18,7 @@
     --popover: 230 35% 7%;
     --popover-foreground: 214 32% 91%;
 
-    --primary: 264 89% 72%;
+    --primary: 262 83% 65%; /* Updated to match web3-purple */
     --primary-foreground: 230 35% 7%;
 
     --secondary: 229 31% 15%;
@@ -50,7 +51,7 @@
     --popover: 210 40% 98%;
     --popover-foreground: 229 31% 10%;
 
-    --primary: 264 89% 72%;
+    --primary: 262 83% 58%; /* Updated to match web3-purple */
     --primary-foreground: 210 40% 98%;
 
     --secondary: 214 32% 95%;
@@ -82,14 +83,16 @@
 
   .dark-mode body {
     background-image: 
-      radial-gradient(circle at 15% 25%, rgba(122, 37, 237, 0.07) 0%, transparent 45%),
-      radial-gradient(circle at 85% 75%, rgba(186, 37, 237, 0.07) 0%, transparent 45%);
+      radial-gradient(circle at 15% 25%, rgba(139, 92, 246, 0.08) 0%, transparent 45%),
+      radial-gradient(circle at 85% 75%, rgba(236, 72, 153, 0.08) 0%, transparent 45%);
+    background-size: 100% 100%, 100% 100%;
   }
 
   .light-mode body {
     background-image: 
-      radial-gradient(circle at 15% 25%, rgba(122, 37, 237, 0.03) 0%, transparent 45%),
-      radial-gradient(circle at 85% 75%, rgba(186, 37, 237, 0.03) 0%, transparent 45%);
+      radial-gradient(circle at 15% 25%, rgba(139, 92, 246, 0.04) 0%, transparent 45%),
+      radial-gradient(circle at 85% 75%, rgba(236, 72, 153, 0.04) 0%, transparent 45%);
+    background-size: 100% 100%, 100% 100%;
   }
 
   ::selection {
@@ -112,6 +115,10 @@
   
   .text-gradient {
     @apply text-transparent bg-clip-text bg-gradient-to-r from-web3-purple via-web3-pink to-web3-blue;
+  }
+  
+  .text-gradient-alt {
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-web3-blue via-web3-purple to-web3-pink;
   }
   
   .section-padding {
@@ -160,6 +167,14 @@
     @apply transition-all duration-300 hover:shadow-glow;
   }
 
+  .hover-glow-pink {
+    @apply transition-all duration-300 hover:shadow-glow-pink;
+  }
+
+  .hover-glow-blue {
+    @apply transition-all duration-300 hover:shadow-glow-blue;
+  }
+
   /* Timeline styles */
   .timeline-container {
     @apply relative;
@@ -175,6 +190,21 @@
   
   .timeline-marker {
     @apply absolute left-0 md:left-1/2 w-4 h-4 rounded-full bg-web3-purple shadow-glow transform -translate-x-1/2 md:-translate-x-1/2;
+  }
+
+  /* Blob effect */
+  .blob {
+    @apply animate-blob;
+  }
+  
+  /* Cyber grid background */
+  .cyber-grid {
+    @apply bg-cyber-grid bg-[size:40px_40px];
+  }
+
+  /* Card styles */
+  .card-hover {
+    @apply transition-all duration-300 hover:-translate-y-2 hover:shadow-glow;
   }
 }
 
@@ -213,5 +243,25 @@
   }
   .animation-delay-500 {
     animation-delay: 500ms;
+  }
+  .animation-delay-1000 {
+    animation-delay: 1000ms;
+  }
+  .animation-delay-1500 {
+    animation-delay: 1500ms;
+  }
+  .animation-delay-2000 {
+    animation-delay: 2000ms;
+  }
+  
+  /* Text gradients with different colors */
+  .gradient-text-1 {
+    @apply bg-gradient-to-r from-web3-purple to-web3-pink text-transparent bg-clip-text;
+  }
+  .gradient-text-2 {
+    @apply bg-gradient-to-r from-web3-blue to-web3-teal text-transparent bg-clip-text;
+  }
+  .gradient-text-3 {
+    @apply bg-gradient-to-r from-web3-orange to-web3-yellow text-transparent bg-clip-text;
   }
 }

@@ -37,14 +37,30 @@ const BackToTop = () => {
           exit={{ opacity: 0, scale: 0.5 }}
           transition={{ duration: 0.3 }}
         >
-          <Button
-            onClick={scrollToTop}
-            size="icon"
-            className="rounded-full bg-web3-purple hover:bg-web3-purple/90 shadow-glow"
-            aria-label="Back to top"
+          <motion.div
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
           >
-            <ArrowUp className="h-5 w-5" />
-          </Button>
+            <Button
+              onClick={scrollToTop}
+              size="icon"
+              className="rounded-full glass border-web3-purple/30 hover:border-web3-purple bg-gradient-to-r from-web3-purple/80 to-web3-pink/80 backdrop-blur-lg shadow-glow"
+              aria-label="Back to top"
+            >
+              <motion.div
+                animate={{ 
+                  y: [0, -2, 0, 2, 0],
+                }}
+                transition={{ 
+                  repeat: Infinity, 
+                  duration: 2,
+                  ease: "easeInOut"
+                }}
+              >
+                <ArrowUp className="h-5 w-5" />
+              </motion.div>
+            </Button>
+          </motion.div>
         </motion.div>
       )}
     </AnimatePresence>

@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Menu, X, Sun, Moon } from 'lucide-react';
 import { useTheme } from '@/contexts/ThemeContext';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -13,6 +13,7 @@ const Navbar = () => {
   const navLinks = [
     { name: "Home", href: "#home" },
     { name: "About", href: "#about" },
+    { name: "Experience", href: "#experience" },
     { name: "Projects", href: "#projects" },
     { name: "Skills", href: "#skills" },
     { name: "Contact", href: "#contact" },
@@ -29,17 +30,17 @@ const Navbar = () => {
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled || isMobileMenuOpen ? 'glass backdrop-blur-lg py-4' : 'py-6'
+      isScrolled || isMobileMenuOpen ? 'glass backdrop-blur-lg py-3' : 'py-5'
     }`}>
       <div className="container flex justify-between items-center">
         <motion.a 
           href="#" 
-          className="text-xl md:text-2xl font-bold text-gradient"
+          className="text-xl md:text-2xl font-bold"
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5 }}
         >
-          Portfolio<span className="text-web3-purple">.</span>
+          <span className="text-gradient">Portfolio</span><span className="text-web3-purple">.</span>
         </motion.a>
         
         {/* Desktop Navigation */}
@@ -69,10 +70,32 @@ const Navbar = () => {
               variant="ghost" 
               size="icon" 
               onClick={toggleTheme}
-              className="hover:bg-primary/10"
+              className="hover:bg-primary/10 relative overflow-hidden"
               aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
             >
-              {theme === 'dark' ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+              <AnimatePresence mode="wait">
+                {theme === 'dark' ? (
+                  <motion.div
+                    key="sun"
+                    initial={{ rotate: -90, opacity: 0 }}
+                    animate={{ rotate: 0, opacity: 1 }}
+                    exit={{ rotate: 90, opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <Sun className="h-5 w-5" />
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    key="moon"
+                    initial={{ rotate: 90, opacity: 0 }}
+                    animate={{ rotate: 0, opacity: 1 }}
+                    exit={{ rotate: -90, opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <Moon className="h-5 w-5" />
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </Button>
           </motion.div>
           
@@ -87,43 +110,64 @@ const Navbar = () => {
               variant="ghost" 
               size="icon" 
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="hover:bg-primary/10"
             >
-              {isMobileMenuOpen ? (
-                <X className="h-6 w-6" />
-              ) : (
-                <Menu className="h-6 w-6" />
-              )}
+              <AnimatePresence mode="wait">
+                {isMobileMenuOpen ? (
+                  <motion.div
+                    key="close"
+                    initial={{ rotate: -90, opacity: 0 }}
+                    animate={{ rotate: 0, opacity: 1 }}
+                    exit={{ rotate: 90, opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <X className="h-6 w-6" />
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    key="menu"
+                    initial={{ rotate: 90, opacity: 0 }}
+                    animate={{ rotate: 0, opacity: 1 }}
+                    exit={{ rotate: -90, opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <Menu className="h-6 w-6" />
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </Button>
           </motion.div>
         </div>
       </div>
       
       {/* Mobile Menu */}
-      {isMobileMenuOpen && (
-        <motion.div 
-          className="md:hidden absolute w-full glass backdrop-blur-lg"
-          initial={{ opacity: 0, height: 0 }}
-          animate={{ opacity: 1, height: 'auto' }}
-          exit={{ opacity: 0, height: 0 }}
-          transition={{ duration: 0.3 }}
-        >
-          <nav className="flex flex-col space-y-4 p-6">
-            {navLinks.map((link, index) => (
-              <motion.a 
-                key={link.name} 
-                href={link.href}
-                className="font-medium hover:text-web3-purple transition-colors"
-                onClick={() => setIsMobileMenuOpen(false)}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.3, delay: 0.05 * index }}
-              >
-                {link.name}
-              </motion.a>
-            ))}
-          </nav>
-        </motion.div>
-      )}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div 
+            className="md:hidden absolute w-full glass backdrop-blur-lg"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            <nav className="flex flex-col space-y-4 p-6">
+              {navLinks.map((link, index) => (
+                <motion.a 
+                  key={link.name} 
+                  href={link.href}
+                  className="font-medium hover:text-web3-purple transition-colors"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.3, delay: 0.05 * index }}
+                >
+                  {link.name}
+                </motion.a>
+              ))}
+            </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 };

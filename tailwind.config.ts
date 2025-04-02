@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -55,14 +54,15 @@ export default {
 				},
 				// Web3 themed colors
 				web3: {
-					purple: '#8B5CF6',
-					pink: '#D946EF',
+					purple: '#7E22CE',
+					pink: '#EC4899',
 					blue: '#0EA5E9',
-					teal: '#06B6D4',
+					teal: '#14B8A6',
 					green: '#10B981',
+					neon: '#22D3EE',
 				},
 				// Custom background for gradients
-				'bg-dark': '#0F172A',
+				'bg-dark': '#0D1117',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -74,8 +74,8 @@ export default {
 				mono: ['JetBrains Mono', 'monospace'],
 			},
 			boxShadow: {
-				glow: '0 0 20px rgba(139, 92, 246, 0.5)',
-				'glow-lg': '0 0 30px rgba(139, 92, 246, 0.6)',
+				glow: '0 0 20px rgba(126, 34, 206, 0.5)',
+				'glow-lg': '0 0 30px rgba(126, 34, 206, 0.6)',
 			},
 			keyframes: {
 				'accordion-down': {
@@ -114,6 +114,18 @@ export default {
 					'0%': { transform: 'scale(0.95)', opacity: '0' },
 					'100%': { transform: 'scale(1)', opacity: '1' },
 				},
+				'float-slow': {
+					'0%, 100%': { transform: 'translateY(0) rotate(0)' },
+					'50%': { transform: 'translateY(-15px) rotate(2deg)' },
+				},
+				'rotate-slow': {
+					'0%': { transform: 'rotate(0deg)' },
+					'100%': { transform: 'rotate(360deg)' },
+				},
+				'pulse-glow': {
+					'0%, 100%': { boxShadow: '0 0 20px rgba(126, 34, 206, 0.5)' },
+					'50%': { boxShadow: '0 0 30px rgba(126, 34, 206, 0.8)' },
+				},
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
@@ -125,10 +137,15 @@ export default {
 				'slide-up': 'slide-up 0.5s ease-out forwards',
 				'slide-in': 'slide-in 0.5s ease-out forwards',
 				'zoom-in': 'zoom-in 0.3s ease-out forwards',
+				'float-slow': 'float-slow 6s ease-in-out infinite',
+				'rotate-slow': 'rotate-slow 12s linear infinite',
+				'pulse-glow': 'pulse-glow 3s ease-in-out infinite',
 			},
 			backgroundImage: {
 				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
 				'hero-gradient': 'linear-gradient(to right, rgba(139, 92, 246, 0.15), rgba(217, 70, 239, 0.15), rgba(14, 165, 233, 0.15))',
+				'web3-gradient': 'linear-gradient(to right, rgba(126, 34, 206, 0.2), rgba(236, 72, 153, 0.2), rgba(14, 165, 233, 0.2))',
+				'web3-glow': 'radial-gradient(circle, rgba(126, 34, 206, 0.2) 0%, rgba(126, 34, 206, 0.05) 70%, transparent 100%)',
 			},
 		}
 	},

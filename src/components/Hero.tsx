@@ -1,6 +1,6 @@
 
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Github, Twitter, Linkedin } from "lucide-react";
+import { ArrowRight, Github, Twitter, Linkedin, MousePointer } from "lucide-react";
 import { motion } from "framer-motion";
 
 const Hero = () => {
@@ -19,9 +19,50 @@ const Hero = () => {
     show: { opacity: 1, y: 0, transition: { duration: 0.5 } }
   };
 
+  const floatingElements = {
+    hidden: { opacity: 0 },
+    show: { 
+      opacity: 1,
+      transition: { 
+        staggerChildren: 0.2,
+        delayChildren: 0.8
+      }
+    }
+  };
+
+  const floatingItem = {
+    hidden: { opacity: 0, scale: 0 },
+    show: { opacity: 1, scale: 1, transition: { duration: 0.5 } }
+  };
+
   return (
-    <section id="home" className="section-padding pt-32 md:pt-40 min-h-screen flex flex-col justify-center">
-      <div className="container max-w-4xl">
+    <section id="home" className="section-padding pt-32 md:pt-40 min-h-screen flex flex-col justify-center relative overflow-hidden">
+      {/* Decorative elements */}
+      <motion.div
+        variants={floatingElements}
+        initial="hidden"
+        animate="show"
+        className="absolute inset-0 pointer-events-none"
+      >
+        <motion.div 
+          variants={floatingItem}
+          className="absolute top-1/4 right-[15%] w-20 h-20 bg-web3-purple/5 rounded-full backdrop-blur-3xl animate-float-slow"
+        />
+        <motion.div 
+          variants={floatingItem}
+          className="absolute bottom-1/3 left-[10%] w-32 h-32 bg-web3-pink/5 rounded-full backdrop-blur-3xl animate-float-slow animation-delay-300"
+        />
+        <motion.div 
+          variants={floatingItem}
+          className="absolute bottom-1/4 right-[20%] w-16 h-16 bg-web3-blue/5 rounded-full backdrop-blur-3xl animate-float-slow animation-delay-500"
+        />
+        <motion.div 
+          variants={floatingItem}
+          className="absolute top-1/3 left-[20%] w-24 h-24 bg-web3-neon/5 rounded-full backdrop-blur-3xl animate-rotate-slow"
+        />
+      </motion.div>
+
+      <div className="container max-w-4xl relative z-10">
         <motion.div 
           className="flex flex-col space-y-6"
           variants={container}
@@ -29,7 +70,7 @@ const Hero = () => {
           animate="show"
         >
           <motion.div variants={item}>
-            <div className="glass px-4 py-2 w-fit rounded-full mb-4 hover-lift">
+            <div className="glass px-4 py-2 w-fit rounded-full mb-4 hover-lift animate-pulse-glow">
               <p className="text-sm font-medium">Available for freelance work</p>
             </div>
           </motion.div>
@@ -71,42 +112,54 @@ const Hero = () => {
               href="https://github.com" 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="p-2 rounded-full glass hover-glow"
+              className="p-2 rounded-full glass hover-glow group"
               aria-label="GitHub Profile"
             >
-              <Github className="h-5 w-5" />
+              <Github className="h-5 w-5 group-hover:text-web3-purple transition-colors" />
             </a>
             <a 
               href="https://twitter.com" 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="p-2 rounded-full glass hover-glow"
+              className="p-2 rounded-full glass hover-glow group"
               aria-label="Twitter Profile"
             >
-              <Twitter className="h-5 w-5" />
+              <Twitter className="h-5 w-5 group-hover:text-web3-pink transition-colors" />
             </a>
             <a 
               href="https://linkedin.com" 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="p-2 rounded-full glass hover-glow"
+              className="p-2 rounded-full glass hover-glow group"
               aria-label="LinkedIn Profile"
             >
-              <Linkedin className="h-5 w-5" />
+              <Linkedin className="h-5 w-5 group-hover:text-web3-blue transition-colors" />
             </a>
           </motion.div>
         </motion.div>
       </div>
       
       <motion.div 
-        className="absolute bottom-10 left-1/2 transform -translate-x-1/2 hidden md:block"
+        className="absolute bottom-10 left-1/2 transform -translate-x-1/2 hidden md:flex flex-col items-center"
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.5, duration: 0.5 }}
       >
-        <a href="#about" className="text-sm text-muted-foreground flex flex-col items-center">
-          <span>Scroll Down</span>
-          <ArrowRight className="h-4 w-4 transform rotate-90 mt-2 animate-bounce" />
+        <a href="#about" className="text-sm text-muted-foreground flex flex-col items-center group">
+          <span className="mb-2 group-hover:text-web3-purple transition-colors">Scroll Down</span>
+          <div className="w-6 h-10 border-2 border-muted-foreground/30 rounded-full flex justify-center p-1 group-hover:border-web3-purple/50 transition-colors">
+            <motion.div 
+              className="w-1.5 h-1.5 rounded-full bg-muted-foreground group-hover:bg-web3-purple transition-colors"
+              animate={{ 
+                y: [0, 12, 0],
+              }}
+              transition={{ 
+                repeat: Infinity, 
+                duration: 1.5,
+                ease: "easeInOut"
+              }}
+            />
+          </div>
         </a>
       </motion.div>
     </section>

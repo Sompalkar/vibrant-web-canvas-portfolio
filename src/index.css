@@ -18,7 +18,7 @@
     --popover: 230 35% 7%;
     --popover-foreground: 214 32% 91%;
 
-    --primary: 262 83% 65%; /* Updated to match web3-purple */
+    --primary: 266 83% 65%; /* Updated to match web3-purple */
     --primary-foreground: 230 35% 7%;
 
     --secondary: 229 31% 15%;
@@ -120,6 +120,10 @@
   .text-gradient-alt {
     @apply text-transparent bg-clip-text bg-gradient-to-r from-web3-blue via-web3-purple to-web3-pink;
   }
+
+  .text-gradient-orange {
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-web3-orange to-web3-yellow;
+  }
   
   .section-padding {
     @apply py-16 px-6 md:px-10 lg:px-20;
@@ -205,6 +209,38 @@
   /* Card styles */
   .card-hover {
     @apply transition-all duration-300 hover:-translate-y-2 hover:shadow-glow;
+  }
+
+  /* New Floating Animation */
+  .floating {
+    @apply animate-float-slow;
+  }
+
+  /* New Glowing Button */
+  .btn-glow {
+    @apply relative overflow-hidden bg-gradient-to-r from-web3-purple to-web3-pink 
+           text-white py-2 px-6 rounded-lg shadow-glow 
+           hover:shadow-glow-lg transition-all duration-300;
+  }
+  
+  .btn-glow::before {
+    @apply content-[''] absolute top-0 left-[-100%] w-full h-full 
+           bg-gradient-to-r from-transparent via-white/30 to-transparent 
+           transform skew-x-[25deg] transition-all duration-700 ease-in-out;
+  }
+  
+  .btn-glow:hover::before {
+    @apply left-[100%];
+  }
+
+  /* Rainbow Border Animation */
+  .rainbow-border {
+    @apply relative p-[2px] rounded-lg overflow-hidden bg-gradient-to-r from-web3-pink via-web3-purple to-web3-blue 
+           transition-all duration-300 animate-rotate-slow;
+  }
+
+  .rainbow-border > div {
+    @apply bg-card rounded-[calc(theme(borderRadius.lg)-2px)] p-4;
   }
 }
 

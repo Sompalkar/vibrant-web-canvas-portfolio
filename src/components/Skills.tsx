@@ -36,6 +36,15 @@ const Skills = () => {
       transition: { duration: 0.3 }
     }
   };
+  
+  // Color mapping for categories
+  const categoryColors = {
+    frontend: 'from-web3-purple to-web3-pink',
+    backend: 'from-web3-blue to-web3-teal',
+    web3: 'from-web3-yellow to-web3-orange',
+    design: 'from-web3-teal to-web3-blue',
+    other: 'from-web3-pink to-web3-purple'
+  };
 
   return (
     <section id="skills" className="section-padding relative" ref={ref}>
@@ -76,7 +85,9 @@ const Skills = () => {
             <Button 
               key={category}
               variant={activeCategory === category ? "default" : "outline"}
-              className={activeCategory === category ? "bg-gradient-to-r from-web3-purple to-web3-blue hover:from-web3-purple/90 hover:to-web3-blue/90" : "border-web3-purple/30"}
+              className={activeCategory === category ? 
+                `bg-gradient-to-r ${categoryColors[category as keyof typeof categoryColors]} hover:opacity-90` : 
+                "border-web3-purple/30"}
               onClick={() => setActiveCategory(category)}
             >
               {category.charAt(0).toUpperCase() + category.slice(1)}
@@ -97,11 +108,12 @@ const Skills = () => {
               variants={item} 
               custom={index}
               whileHover={{ y: -5, transition: { duration: 0.2 } }}
+              className="h-full"
             >
-              <Card className="glass hover:shadow-glow transition-all duration-300 group h-full">
+              <Card className={`glass hover:shadow-glow transition-all duration-300 group h-full border border-white/10 hover:border-${skill.category === 'frontend' ? 'web3-purple' : skill.category === 'backend' ? 'web3-blue' : 'web3-orange'}/30`}>
                 <CardContent className="p-6 flex flex-col items-center justify-center h-full">
                   <motion.div 
-                    className="text-2xl mb-2"
+                    className="text-3xl mb-3 p-3 rounded-full bg-secondary/50"
                     whileHover={{ scale: 1.2, rotate: 5 }}
                     transition={{ type: "spring", stiffness: 400, damping: 10 }}
                   >
@@ -109,7 +121,12 @@ const Skills = () => {
                   </motion.div>
                   <motion.h3 
                     className="font-medium text-center"
-                    whileHover={{ color: "#8B5CF6", transition: { duration: 0.2 } }}
+                    whileHover={{ 
+                      color: skill.category === 'frontend' ? '#8B5CF6' : 
+                             skill.category === 'backend' ? '#3B82F6' : 
+                             '#F97316',
+                      transition: { duration: 0.2 } 
+                    }}
                   >
                     {skill.name}
                   </motion.h3>

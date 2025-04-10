@@ -3,7 +3,8 @@ import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { Code, Coffee, Heart, Star } from "lucide-react";
+import { Code, Coffee, Heart, Star, Mail, MapPin, Github, Linkedin } from "lucide-react";
+import { personalInfo } from "@/utils/data";
 
 const About = () => {
   const ref = useRef(null);
@@ -21,23 +22,23 @@ const About = () => {
   const statsItems = [
     { 
       icon: <Code className="h-5 w-5 text-web3-purple" />,
-      value: "5+", 
+      value: "2+", 
       label: "Years of Experience" 
     },
     { 
       icon: <Coffee className="h-5 w-5 text-web3-pink" />,
-      value: "50+", 
+      value: "5+", 
       label: "Projects Completed" 
     },
     { 
       icon: <Star className="h-5 w-5 text-web3-blue" />,
-      value: "20+", 
-      label: "Happy Clients" 
+      value: "4+", 
+      label: "Certifications" 
     },
     { 
       icon: <Heart className="h-5 w-5 text-web3-green" />,
       value: "10+", 
-      label: "Open Source Contributions" 
+      label: "Tech Events" 
     }
   ];
 
@@ -57,7 +58,7 @@ const About = () => {
               <div className="w-64 h-64 md:w-80 md:h-80 mx-auto rounded-xl overflow-hidden glass glow-border hover-lift">
                 <div className="w-full h-full bg-gradient-to-br from-web3-purple/20 to-web3-blue/20 flex items-center justify-center">
                   <div className="p-8 backdrop-blur-sm bg-black/10 rounded-full">
-                    <span className="text-6xl">👨‍💻</span>
+                    <span className="text-6xl">👩‍💻</span>
                   </div>
                 </div>
               </div>
@@ -89,6 +90,51 @@ const About = () => {
                 }}
               />
             </div>
+            
+            {/* Contact Details */}
+            <motion.div
+              className="mt-8 space-y-3 text-center"
+              custom={2}
+              variants={variants}
+              initial="hidden"
+              animate={isInView ? "visible" : "hidden"}
+            >
+              <h3 className="text-xl font-bold">{personalInfo.name}</h3>
+              <p className="text-muted-foreground">{personalInfo.title}</p>
+              
+              <div className="flex items-center justify-center text-sm text-muted-foreground space-x-1">
+                <MapPin className="h-4 w-4 text-web3-pink" />
+                <span>{personalInfo.location}</span>
+              </div>
+              
+              <div className="flex justify-center space-x-3 pt-3">
+                <a 
+                  href={`mailto:${personalInfo.email}`} 
+                  className="p-2 rounded-full glass hover-glow-pink"
+                  aria-label="Email"
+                >
+                  <Mail className="h-5 w-5" />
+                </a>
+                <a 
+                  href={personalInfo.linkedin} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="p-2 rounded-full glass hover-glow"
+                  aria-label="LinkedIn"
+                >
+                  <Linkedin className="h-5 w-5" />
+                </a>
+                <a 
+                  href={personalInfo.github} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="p-2 rounded-full glass hover-glow-blue"
+                  aria-label="GitHub"
+                >
+                  <Github className="h-5 w-5" />
+                </a>
+              </div>
+            </motion.div>
           </motion.div>
           
           {/* Text Side */}
@@ -111,7 +157,7 @@ const About = () => {
                 initial="hidden"
                 animate={isInView ? "visible" : "hidden"}
               >
-                I am a passionate developer specializing in frontend development with a background in Web3 technologies. With over 5 years of experience, I've worked on projects ranging from interactive websites to decentralized applications.
+                Full-stack developer with a passion for creating efficient, user-friendly applications. I recently completed my Bachelor in Computer Application with a strong academic record (CGPA 9.1) from SavitriBai Phule University, Pune.
               </motion.p>
               
               <motion.p 
@@ -121,7 +167,7 @@ const About = () => {
                 initial="hidden"
                 animate={isInView ? "visible" : "hidden"}
               >
-                My approach combines aesthetic design with efficient functionality, ensuring each project not only looks great but performs exceptionally. I'm particularly interested in modern web technologies that enhance user experience and accessibility.
+                My expertise spans both front-end and back-end technologies, with significant experience in JavaScript, React, Node.js, Python and Django. I have successfully built and deployed property booking platforms, bus pass management systems, and various web applications.
               </motion.p>
 
               <motion.p 
@@ -131,7 +177,7 @@ const About = () => {
                 initial="hidden"
                 animate={isInView ? "visible" : "hidden"}
               >
-                In my free time, I contribute to open-source projects, write technical articles, and explore emerging technologies in the web3 space. I believe in continuous learning and staying updated with the latest industry trends.
+                In addition to my technical skills, I actively participate in hackathons and tech events, where I've honed my problem-solving abilities and teamwork skills. I'm constantly learning new technologies and frameworks to stay updated with industry trends.
               </motion.p>
               
               <motion.div 
@@ -164,9 +210,16 @@ const About = () => {
                 initial="hidden"
                 animate={isInView ? "visible" : "hidden"}
               >
-                <Button variant="outline" className="border-web3-purple/30 hover:border-web3-purple hover:bg-web3-purple/10 transition-all duration-300">
-                  More About Me
-                </Button>
+                <div className="flex flex-wrap gap-3">
+                  <Button variant="outline" className="border-web3-purple/30 hover:border-web3-purple hover:bg-web3-purple/10 transition-all duration-300">
+                    Download Resume
+                  </Button>
+                  <a href="#contact">
+                    <Button className="bg-gradient-to-r from-web3-purple to-web3-pink hover:from-web3-purple/90 hover:to-web3-pink/90 transition-all duration-300">
+                      Contact Me
+                    </Button>
+                  </a>
+                </div>
               </motion.div>
             </div>
           </div>

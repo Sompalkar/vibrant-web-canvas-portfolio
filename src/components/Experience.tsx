@@ -2,7 +2,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { useInView } from "framer-motion";
-import { BriefcaseBusiness, Calendar, GraduationCap, Award, Star, Coffee, Sparkles, Certificate } from "lucide-react";
+import { BriefcaseBusiness, Calendar, GraduationCap, Award, Star, Coffee, Sparkles, Medal } from "lucide-react";
 import { education, certificates, awards } from "@/utils/data";
 
 const experiences = [
@@ -20,7 +20,7 @@ const experiences = [
     company: "AWS Academy Cloud Foundations",
     date: "2023",
     description: "Comprehensive cloud computing certification focusing on AWS services and cloud architecture.",
-    icon: Certificate,
+    icon: Medal,
     type: "certificate",
     achievements: ["Cloud infrastructure management", "Understanding AWS services ecosystem", "Deployment strategies"]
   },
@@ -29,7 +29,7 @@ const experiences = [
     company: "Barclays (Citizenship Cohort –1)",
     date: "2022",
     description: "In-depth training on machine learning concepts, algorithms, and applications in finance.",
-    icon: Certificate,
+    icon: Medal,
     type: "certificate",
     achievements: ["Algorithm implementation", "Data analysis", "Predictive modeling"]
   },
@@ -38,7 +38,7 @@ const experiences = [
     company: "Infosys | SpringBoard",
     date: "2022",
     description: "Specialized course on utilizing Python for data manipulation, visualization, and analysis.",
-    icon: Certificate,
+    icon: Medal,
     type: "certificate",
     achievements: ["Data visualization", "Statistical analysis", "Data pipelines"]
   },
@@ -47,7 +47,7 @@ const experiences = [
     company: "Hope Foundation",
     date: "2022",
     description: "Training program focused on implementing AI algorithms using Python.",
-    icon: Certificate,
+    icon: Medal,
     type: "certificate",
     achievements: ["Neural networks", "Natural language processing", "Computer vision basics"]
   },

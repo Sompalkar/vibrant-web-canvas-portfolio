@@ -1,4 +1,12 @@
 
+import { IconType } from "react-icons";
+import { 
+  Code, Database, Binary, Braces, Server, 
+  Languages, Globe, Blocks, Cpu, AppWindow,
+  Brain, Users, MessageSquare, GitBranch,
+  Construction, Docker as DockerIcon, Boxes
+} from "lucide-react";
+
 export interface Project {
   id: number;
   title: string;
@@ -35,95 +43,97 @@ export interface Award {
 }
 
 export const personalInfo = {
-  name: "Avantika Bhadke",
+  name: "Somnath Palkar",
   title: "CS '24 | Full-stack Developer",
-  location: "Pune, India",
-  email: "ava@gmail.com",
-  linkedin: "https://linkedin.com/in/Avantika",
-  github: "https://github.com/avantika0905",
+  subtitle: "Associate Software Engineer at Accenture (Starting Sep 2024)",
+  location: "Hadapsar, Pune, India",
+  phone: "(+91) 8265047578",
+  email: "palkarsom1@gmail.com",
+  linkedin: "https://linkedin.com/in/sompalkar",
+  github: "https://github.com/sompalkar",
+  portfolio: "https://somnm.vercel.app/"
 }
+
+export const experience = [
+  {
+    title: "Associate Software Engineer",
+    company: "Accenture",
+    date: "Starting Sep 2024",
+    achievements: [
+      "Automated CI/CD pipelines and cloud deployments, accelerating release cycles by 50%",
+      "Built and enhanced frontend components with React & TypeScript, improving load times and user engagement"
+    ]
+  }
+];
 
 export const projects: Project[] = [
   {
     id: 1,
     title: "PlaceBooking.com",
-    description: "A comprehensive property booking system with features like no-overlap booking, authentication with password hashing, and photo uploads using Multer and Cloudinary.",
-    tags: ["React", "Node.js", "MongoDB", "Express", "JWT"],
+    description: "A comprehensive property booking platform with secure authentication, payment integration, and cloud storage for property images.",
+    tags: ["React", "Node.js", "MongoDB", "JWT", "Cloudinary", "Payment Gateway"],
     imageUrl: "/placeholder.svg",
-    liveUrl: "https://placebooking.com",
-    githubUrl: "https://github.com/avantika0905/placebooking",
+    liveUrl: "https://placebooking.vercel.app",
+    githubUrl: "https://github.com/sompalkar/placebooking",
   },
   {
     id: 2,
-    title: "City Bus Pass System",
-    description: "Streamlined pass issuance system developed using Python (Django) and MySQL to reduce paperwork with a user-friendly interface for efficient management.",
-    tags: ["Python", "Django", "MySQL", "Bootstrap"],
+    title: "SocioMedia.com",
+    description: "A full-featured social media platform with user authentication, post sharing, theme switching, and follow functionality.",
+    tags: ["React", "Node.js", "MongoDB", "JWT", "Socket.io"],
     imageUrl: "/placeholder.svg",
-    githubUrl: "https://github.com/avantika0905/city-bus-pass",
+    githubUrl: "https://github.com/sompalkar/sociomedia",
   },
   {
     id: 3,
-    title: "Portfolio Website",
-    description: "A modern, responsive portfolio website showcasing my projects and skills with animations and interactive elements.",
-    tags: ["React", "TypeScript", "TailwindCSS", "Framer Motion"],
+    title: "Mern GPT",
+    description: "A personalized GPT implementation using OpenAI's API with responsive UI and authentication.",
+    tags: ["MERN", "OpenAI", "TypeScript", "JWT"],
     imageUrl: "/placeholder.svg",
-    liveUrl: "https://avantikaportfolio.com",
+    liveUrl: "https://merngpt.vercel.app",
+    githubUrl: "https://github.com/sompalkar/merngpt",
   },
 ];
 
-export const skills: Skill[] = [
-  { name: "JavaScript", icon: "JS", category: 'frontend' },
-  { name: "React", icon: "⚛️", category: 'frontend' },
-  { name: "Node.js", icon: "⬢", category: 'backend' },
-  { name: "Python", icon: "🐍", category: 'backend' },
-  { name: "Django", icon: "🦄", category: 'backend' },
-  { name: "HTML5", icon: "📝", category: 'frontend' },
-  { name: "CSS3", icon: "🎨", category: 'frontend' },
-  { name: "TypeScript", icon: "TS", category: 'frontend' },
-  { name: "Java", icon: "☕", category: 'backend' },
-  { name: "C++", icon: "++", category: 'backend' },
-  { name: "MongoDB", icon: "🍃", category: 'backend' },
-  { name: "MySQL", icon: "🐬", category: 'backend' },
-  { name: "Git", icon: "🔄", category: 'other' },
-  { name: "AWS", icon: "☁️", category: 'other' },
-  { name: "Problem Solving", icon: "🧩", category: 'other' },
+export const skills = [
+  { name: "JavaScript", icon: "Code", category: 'frontend' },
+  { name: "TypeScript", icon: "Braces", category: 'frontend' },
+  { name: "React", icon: "AppWindow", category: 'frontend' },
+  { name: "Next.js", icon: "Blocks", category: 'frontend' },
+  { name: "Redux", icon: "Construction", category: 'frontend' },
+  { name: "TailwindCSS", icon: "Palette", category: 'frontend' },
+  { name: "Node.js", icon: "Server", category: 'backend' },
+  { name: "Express", icon: "Server", category: 'backend' },
+  { name: "PostgreSQL", icon: "Database", category: 'backend' },
+  { name: "Prisma", icon: "Database", category: 'backend' },
+  { name: "Docker", icon: "DockerIcon", category: 'backend' },
+  { name: "Python", icon: "Binary", category: 'backend' },
+  { name: "Java", icon: "Coffee", category: 'backend' },
+  { name: "Spring Boot", icon: "Leaf", category: 'backend' },
+  { name: "C++", icon: "Cpu", category: 'backend' },
+  { name: "WebSockets", icon: "Globe", category: 'backend' },
+  { name: "Git", icon: "GitBranch", category: 'tools' },
+  { name: "Problem Solving", icon: "Brain", category: 'soft' },
+  { name: "Communication", icon: "MessageSquare", category: 'soft' },
+  { name: "Team Work", icon: "Users", category: 'soft' },
 ];
 
-export const education: Education[] = [
+export const education = [
   {
     institution: "SavitriBai Phule University, Pune",
     degree: "Bachelor In Computer Application",
     duration: "2021 - 2024",
-    grade: "CGPA - 9.1",
+    grade: "CGPA - 8.6",
   }
 ];
 
-export const certificates: Certificate[] = [
+export const certificates = [
   {
-    title: "AWS Academy Graduate - AWS Academy Cloud Foundations",
-    issuer: "AWS Academy",
+    title: "Meta Frontend Course - React Basics",
+    issuer: "Meta",
   },
   {
-    title: "Machine Learning Programme (Citizenship Cohort –1)",
-    issuer: "Barclays",
-  },
-  {
-    title: "Python for Data Science",
-    issuer: "Infosys | SpringBoard",
-  },
-  {
-    title: "AI Python Programming",
-    issuer: "Hope Foundation",
-  }
-];
-
-export const awards: Award[] = [
-  {
-    title: "Tech Events Participation",
-    description: "Attended and organized various tech events in college to foster a learning environment.",
-  },
-  {
-    title: "Hackathon Participation",
-    description: "Participated in multiple hackathons, showcasing problem-solving and coding skills.",
+    title: "Advanced React Concepts",
+    issuer: "Meta",
   }
 ];

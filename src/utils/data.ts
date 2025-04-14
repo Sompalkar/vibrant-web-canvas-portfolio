@@ -1,10 +1,11 @@
+
 import { IconType } from "react-icons/lib";
 import { 
   Code, Database, Binary, Braces, Server, 
   Languages, Globe, Blocks, Cpu, AppWindow,
   Brain, Users, MessageSquare, GitBranch,
   Construction, Boxes, Coffee, Leaf,
-  Cloud, CloudCog, Docker, Terminal, Workflow,
+  Cloud, CloudCog, Terminal, Workflow,
   Bot, FileJson, PackageSearch
 } from "lucide-react";
 
@@ -112,7 +113,7 @@ export const skills = [
   { name: "Express", icon: "Server", category: 'backend' },
   { name: "PostgreSQL", icon: "Database", category: 'backend' },
   { name: "Prisma", icon: "Database", category: 'backend' },
-  { name: "Docker", icon: "Docker", category: 'backend' },
+  { name: "Docker", icon: "Boxes", category: 'backend' }, // Changed from Docker to Boxes
   { name: "Python", icon: "Binary", category: 'backend' },
   { name: "Java", icon: "Coffee", category: 'backend' },
   { name: "Spring Boot", icon: "Leaf", category: 'backend' },

@@ -1,11 +1,10 @@
+
 import { IconType } from "react-icons/lib";
 import { 
   Code, Database, Binary, Braces, Server, 
   Languages, Globe, Blocks, Cpu, AppWindow,
   Brain, Users, MessageSquare, GitBranch,
-  Construction, Boxes, Coffee, Leaf,
-  Cloud, CloudCog, Docker, Terminal, Workflow,
-  Bot, FileJson, PackageSearch
+  Construction, Boxes, Coffee, Leaf, DockerIcon
 } from "lucide-react";
 
 export interface Project {
@@ -60,14 +59,9 @@ export const experience = [
     title: "Associate Software Engineer",
     company: "Accenture",
     date: "Starting Sep 2024",
-    type: "Full-time",
-    location: "Pune, India",
     achievements: [
       "Automated CI/CD pipelines and cloud deployments, accelerating release cycles by 50%",
-      "Built and enhanced frontend components with React & TypeScript, improving load times and user engagement",
-      "Collaborated with cross-functional teams to implement cloud-native solutions",
-      "Contributed to microservices architecture design and implementation",
-      "Implemented automated testing strategies improving code quality"
+      "Built and enhanced frontend components with React & TypeScript, improving load times and user engagement"
     ]
   }
 ];
@@ -76,8 +70,8 @@ export const projects: Project[] = [
   {
     id: 1,
     title: "PlaceBooking.com",
-    description: "A comprehensive property booking platform with secure authentication, payment integration, and cloud storage for property images. Features include property listing, booking management, and secure payments.",
-    tags: ["React", "Node.js", "MongoDB", "JWT", "Cloudinary", "Payment Gateway", "TypeScript"],
+    description: "A comprehensive property booking platform with secure authentication, payment integration, and cloud storage for property images.",
+    tags: ["React", "Node.js", "MongoDB", "JWT", "Cloudinary", "Payment Gateway"],
     imageUrl: "/placeholder.svg",
     liveUrl: "https://placebooking.vercel.app",
     githubUrl: "https://github.com/sompalkar/placebooking",
@@ -85,16 +79,16 @@ export const projects: Project[] = [
   {
     id: 2,
     title: "SocioMedia.com",
-    description: "A full-featured social media platform with user authentication, post sharing, theme switching, and follow functionality. Implements real-time updates and responsive design.",
-    tags: ["React", "Node.js", "MongoDB", "JWT", "Socket.io", "Redux"],
+    description: "A full-featured social media platform with user authentication, post sharing, theme switching, and follow functionality.",
+    tags: ["React", "Node.js", "MongoDB", "JWT", "Socket.io"],
     imageUrl: "/placeholder.svg",
     githubUrl: "https://github.com/sompalkar/sociomedia",
   },
   {
     id: 3,
     title: "Mern GPT",
-    description: "A personalized GPT implementation using OpenAI's API with responsive UI and authentication. Optimized for performance with 30% faster loading times.",
-    tags: ["MERN", "OpenAI", "TypeScript", "JWT", "TailwindCSS"],
+    description: "A personalized GPT implementation using OpenAI's API with responsive UI and authentication.",
+    tags: ["MERN", "OpenAI", "TypeScript", "JWT"],
     imageUrl: "/placeholder.svg",
     liveUrl: "https://merngpt.vercel.app",
     githubUrl: "https://github.com/sompalkar/merngpt",
@@ -103,30 +97,25 @@ export const projects: Project[] = [
 
 export const skills = [
   { name: "JavaScript", icon: "Code", category: 'frontend' },
-  { name: "TypeScript", icon: "FileJson", category: 'frontend' },
+  { name: "TypeScript", icon: "Braces", category: 'frontend' },
   { name: "React", icon: "AppWindow", category: 'frontend' },
   { name: "Next.js", icon: "Blocks", category: 'frontend' },
-  { name: "Redux", icon: "PackageSearch", category: 'frontend' },
+  { name: "Redux", icon: "Construction", category: 'frontend' },
   { name: "TailwindCSS", icon: "Palette", category: 'frontend' },
   { name: "Node.js", icon: "Server", category: 'backend' },
   { name: "Express", icon: "Server", category: 'backend' },
   { name: "PostgreSQL", icon: "Database", category: 'backend' },
   { name: "Prisma", icon: "Database", category: 'backend' },
-  { name: "Docker", icon: "Docker", category: 'backend' },
+  { name: "Docker", icon: "DockerIcon", category: 'backend' },
   { name: "Python", icon: "Binary", category: 'backend' },
   { name: "Java", icon: "Coffee", category: 'backend' },
   { name: "Spring Boot", icon: "Leaf", category: 'backend' },
   { name: "C++", icon: "Cpu", category: 'backend' },
   { name: "WebSockets", icon: "Globe", category: 'backend' },
-  { name: "AWS", icon: "Cloud", category: 'tools' },
-  { name: "CI/CD", icon: "Workflow", category: 'tools' },
   { name: "Git", icon: "GitBranch", category: 'tools' },
-  { name: "Cloud Architecture", icon: "CloudCog", category: 'tools' },
-  { name: "Terminal", icon: "Terminal", category: 'tools' },
   { name: "Problem Solving", icon: "Brain", category: 'soft' },
   { name: "Communication", icon: "MessageSquare", category: 'soft' },
   { name: "Team Work", icon: "Users", category: 'soft' },
-  { name: "AI/ML", icon: "Bot", category: 'soft' },
 ];
 
 export const education = [
@@ -149,6 +138,7 @@ export const certificates = [
   }
 ];
 
+// Add the missing awards array
 export const awards = [
   {
     title: "Hackathon Participant",

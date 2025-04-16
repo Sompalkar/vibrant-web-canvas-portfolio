@@ -1,4 +1,3 @@
-
 import { IconType } from "react-icons/lib";
 import { 
   Code, Database, Binary, Braces, Server, 
@@ -103,31 +102,43 @@ export const projects: Project[] = [
 ];
 
 export const skills = [
-  { name: "JavaScript", icon: "Code", category: 'frontend' },
-  { name: "TypeScript", icon: "FileJson", category: 'frontend' },
-  { name: "React", icon: "AppWindow", category: 'frontend' },
-  { name: "Next.js", icon: "Blocks", category: 'frontend' },
-  { name: "Redux", icon: "PackageSearch", category: 'frontend' },
-  { name: "TailwindCSS", icon: "Palette", category: 'frontend' },
-  { name: "Node.js", icon: "Server", category: 'backend' },
-  { name: "Express", icon: "Server", category: 'backend' },
-  { name: "PostgreSQL", icon: "Database", category: 'backend' },
-  { name: "Prisma", icon: "Database", category: 'backend' },
-  { name: "Docker", icon: "Boxes", category: 'backend' }, // Changed from Docker to Boxes
-  { name: "Python", icon: "Binary", category: 'backend' },
-  { name: "Java", icon: "Coffee", category: 'backend' },
-  { name: "Spring Boot", icon: "Leaf", category: 'backend' },
-  { name: "C++", icon: "Cpu", category: 'backend' },
-  { name: "WebSockets", icon: "Globe", category: 'backend' },
-  { name: "AWS", icon: "Cloud", category: 'tools' },
-  { name: "CI/CD", icon: "Workflow", category: 'tools' },
-  { name: "Git", icon: "GitBranch", category: 'tools' },
-  { name: "Cloud Architecture", icon: "CloudCog", category: 'tools' },
-  { name: "Terminal", icon: "Terminal", category: 'tools' },
-  { name: "Problem Solving", icon: "Brain", category: 'soft' },
-  { name: "Communication", icon: "MessageSquare", category: 'soft' },
-  { name: "Team Work", icon: "Users", category: 'soft' },
-  { name: "AI/ML", icon: "Bot", category: 'soft' },
+  // Frontend
+  { name: "JavaScript", icon: "⚡ JS", category: 'frontend' },
+  { name: "TypeScript", icon: "💼 TS", category: 'frontend' },
+  { name: "React", icon: "⚛️ React", category: 'frontend' },
+  { name: "HTML5", icon: "📝 HTML", category: 'frontend' },
+  { name: "CSS3", icon: "🎨 CSS", category: 'frontend' },
+  { name: "Next.js", icon: "▲ Next", category: 'frontend' },
+  { name: "Redux", icon: "🔄 Redux", category: 'frontend' },
+  { name: "TailwindCSS", icon: "🌊 Tailwind", category: 'frontend' },
+  
+  // Backend
+  { name: "Node.js", icon: "⬢ Node", category: 'backend' },
+  { name: "Python", icon: "🐍 Python", category: 'backend' },
+  { name: "Django", icon: "🦄 Django", category: 'backend' },
+  { name: "Java", icon: "☕ Java", category: 'backend' },
+  { name: "C++", icon: "++ C++", category: 'backend' },
+  { name: "Express", icon: "🚂 Express", category: 'backend' },
+  { name: "MongoDB", icon: "🍃 MongoDB", category: 'backend' },
+  { name: "MySQL", icon: "🐬 MySQL", category: 'backend' },
+  { name: "PostgreSQL", icon: "🐘 PostgreSQL", category: 'backend' },
+  { name: "Redis", icon: "🔴 Redis", category: 'backend' },
+  
+  // DevOps & Cloud
+  { name: "Docker", icon: "🐋 Docker", category: 'tools' },
+  { name: "Kubernetes", icon: "⚈ K8s", category: 'tools' },
+  { name: "AWS", icon: "☁️ AWS", category: 'tools' },
+  { name: "Linux", icon: "🐧 Linux", category: 'tools' },
+  { name: "Ansible", icon: "🔧 Ansible", category: 'tools' },
+  { name: "DevOps", icon: "♾️ DevOps", category: 'tools' },
+  { name: "CI/CD", icon: "🔄 CI/CD", category: 'tools' },
+  { name: "Git", icon: "🔄 Git", category: 'tools' },
+  
+  // Soft Skills
+  { name: "Problem Solving", icon: "🧠 Problem Solving", category: 'soft' },
+  { name: "Communication", icon: "💬 Communication", category: 'soft' },
+  { name: "Team Work", icon: "👥 Team Work", category: 'soft' },
+  { name: "AI/ML", icon: "🤖 AI/ML", category: 'soft' }
 ];
 
 export const education = [

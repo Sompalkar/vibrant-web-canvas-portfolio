@@ -1,12 +1,3 @@
-import { IconType } from "react-icons/lib";
-import { 
-  Code, Database, Binary, Braces, Server, 
-  Languages, Globe, Blocks, Cpu, AppWindow,
-  Brain, Users, MessageSquare, GitBranch,
-  Construction, Boxes, Coffee, Leaf,
-  Cloud, CloudCog, Terminal, Workflow,
-  Bot, FileJson, PackageSearch
-} from "lucide-react";
 
 export interface Project {
   id: number;
@@ -21,7 +12,7 @@ export interface Project {
 export interface Skill {
   name: string;
   icon: string;
-  category: 'frontend' | 'backend' | 'web3' | 'design' | 'other' | 'tools' | 'soft';
+  category: 'frontend' | 'backend' | 'web3' | 'design' | 'other';
 }
 
 export interface Education {
@@ -44,130 +35,95 @@ export interface Award {
 }
 
 export const personalInfo = {
-  name: "Somnath Palkar",
+  name: "Avantika Bhadke",
   title: "CS '24 | Full-stack Developer",
-  subtitle: "Associate Software Engineer at Accenture (Starting Sep 2024)",
-  location: "Hadapsar, Pune, India",
-  phone: "(+91) 8265047578",
-  email: "palkarsom1@gmail.com",
-  linkedin: "https://linkedin.com/in/sompalkar",
-  github: "https://github.com/sompalkar",
-  portfolio: "https://somnm.vercel.app/"
+  location: "Pune, India",
+  email: "ava@gmail.com",
+  linkedin: "https://linkedin.com/in/Avantika",
+  github: "https://github.com/avantika0905",
 }
-
-export const experience = [
-  {
-    title: "Associate Software Engineer",
-    company: "Accenture",
-    date: "Starting Sep 2024",
-    type: "Full-time",
-    location: "Pune, India",
-    achievements: [
-      "Automated CI/CD pipelines and cloud deployments, accelerating release cycles by 50%",
-      "Built and enhanced frontend components with React & TypeScript, improving load times and user engagement",
-      "Collaborated with cross-functional teams to implement cloud-native solutions",
-      "Contributed to microservices architecture design and implementation",
-      "Implemented automated testing strategies improving code quality"
-    ]
-  }
-];
 
 export const projects: Project[] = [
   {
     id: 1,
     title: "PlaceBooking.com",
-    description: "A comprehensive property booking platform with secure authentication, payment integration, and cloud storage for property images. Features include property listing, booking management, and secure payments.",
-    tags: ["React", "Node.js", "MongoDB", "JWT", "Cloudinary", "Payment Gateway", "TypeScript"],
+    description: "A comprehensive property booking system with features like no-overlap booking, authentication with password hashing, and photo uploads using Multer and Cloudinary.",
+    tags: ["React", "Node.js", "MongoDB", "Express", "JWT"],
     imageUrl: "/placeholder.svg",
-    liveUrl: "https://placebooking.vercel.app",
-    githubUrl: "https://github.com/sompalkar/placebooking",
+    liveUrl: "https://placebooking.com",
+    githubUrl: "https://github.com/avantika0905/placebooking",
   },
   {
     id: 2,
-    title: "SocioMedia.com",
-    description: "A full-featured social media platform with user authentication, post sharing, theme switching, and follow functionality. Implements real-time updates and responsive design.",
-    tags: ["React", "Node.js", "MongoDB", "JWT", "Socket.io", "Redux"],
+    title: "City Bus Pass System",
+    description: "Streamlined pass issuance system developed using Python (Django) and MySQL to reduce paperwork with a user-friendly interface for efficient management.",
+    tags: ["Python", "Django", "MySQL", "Bootstrap"],
     imageUrl: "/placeholder.svg",
-    githubUrl: "https://github.com/sompalkar/sociomedia",
+    githubUrl: "https://github.com/avantika0905/city-bus-pass",
   },
   {
     id: 3,
-    title: "Mern GPT",
-    description: "A personalized GPT implementation using OpenAI's API with responsive UI and authentication. Optimized for performance with 30% faster loading times.",
-    tags: ["MERN", "OpenAI", "TypeScript", "JWT", "TailwindCSS"],
+    title: "Portfolio Website",
+    description: "A modern, responsive portfolio website showcasing my projects and skills with animations and interactive elements.",
+    tags: ["React", "TypeScript", "TailwindCSS", "Framer Motion"],
     imageUrl: "/placeholder.svg",
-    liveUrl: "https://merngpt.vercel.app",
-    githubUrl: "https://github.com/sompalkar/merngpt",
+    liveUrl: "https://avantikaportfolio.com",
   },
 ];
 
-export const skills = [
-  // Frontend
-  { name: "JavaScript", icon: "⚡ JS", category: 'frontend' },
-  { name: "TypeScript", icon: "💼 TS", category: 'frontend' },
-  { name: "React", icon: "⚛️ React", category: 'frontend' },
-  { name: "HTML5", icon: "📝 HTML", category: 'frontend' },
-  { name: "CSS3", icon: "🎨 CSS", category: 'frontend' },
-  { name: "Next.js", icon: "▲ Next", category: 'frontend' },
-  { name: "Redux", icon: "🔄 Redux", category: 'frontend' },
-  { name: "TailwindCSS", icon: "🌊 Tailwind", category: 'frontend' },
-  
-  // Backend
-  { name: "Node.js", icon: "⬢ Node", category: 'backend' },
-  { name: "Python", icon: "🐍 Python", category: 'backend' },
-  { name: "Django", icon: "🦄 Django", category: 'backend' },
-  { name: "Java", icon: "☕ Java", category: 'backend' },
-  { name: "C++", icon: "++ C++", category: 'backend' },
-  { name: "Express", icon: "🚂 Express", category: 'backend' },
-  { name: "MongoDB", icon: "🍃 MongoDB", category: 'backend' },
-  { name: "MySQL", icon: "🐬 MySQL", category: 'backend' },
-  { name: "PostgreSQL", icon: "🐘 PostgreSQL", category: 'backend' },
-  { name: "Redis", icon: "🔴 Redis", category: 'backend' },
-  
-  // DevOps & Cloud
-  { name: "Docker", icon: "🐋 Docker", category: 'tools' },
-  { name: "Kubernetes", icon: "⚈ K8s", category: 'tools' },
-  { name: "AWS", icon: "☁️ AWS", category: 'tools' },
-  { name: "Linux", icon: "🐧 Linux", category: 'tools' },
-  { name: "Ansible", icon: "🔧 Ansible", category: 'tools' },
-  { name: "DevOps", icon: "♾️ DevOps", category: 'tools' },
-  { name: "CI/CD", icon: "🔄 CI/CD", category: 'tools' },
-  { name: "Git", icon: "🔄 Git", category: 'tools' },
-  
-  // Soft Skills
-  { name: "Problem Solving", icon: "🧠 Problem Solving", category: 'soft' },
-  { name: "Communication", icon: "💬 Communication", category: 'soft' },
-  { name: "Team Work", icon: "👥 Team Work", category: 'soft' },
-  { name: "AI/ML", icon: "🤖 AI/ML", category: 'soft' }
+export const skills: Skill[] = [
+  { name: "JavaScript", icon: "JS", category: 'frontend' },
+  { name: "React", icon: "⚛️", category: 'frontend' },
+  { name: "Node.js", icon: "⬢", category: 'backend' },
+  { name: "Python", icon: "🐍", category: 'backend' },
+  { name: "Django", icon: "🦄", category: 'backend' },
+  { name: "HTML5", icon: "📝", category: 'frontend' },
+  { name: "CSS3", icon: "🎨", category: 'frontend' },
+  { name: "TypeScript", icon: "TS", category: 'frontend' },
+  { name: "Java", icon: "☕", category: 'backend' },
+  { name: "C++", icon: "++", category: 'backend' },
+  { name: "MongoDB", icon: "🍃", category: 'backend' },
+  { name: "MySQL", icon: "🐬", category: 'backend' },
+  { name: "Git", icon: "🔄", category: 'other' },
+  { name: "AWS", icon: "☁️", category: 'other' },
+  { name: "Problem Solving", icon: "🧩", category: 'other' },
 ];
 
-export const education = [
+export const education: Education[] = [
   {
     institution: "SavitriBai Phule University, Pune",
     degree: "Bachelor In Computer Application",
     duration: "2021 - 2024",
-    grade: "CGPA - 8.6",
+    grade: "CGPA - 9.1",
   }
 ];
 
-export const certificates = [
+export const certificates: Certificate[] = [
   {
-    title: "Meta Frontend Course - React Basics",
-    issuer: "Meta",
+    title: "AWS Academy Graduate - AWS Academy Cloud Foundations",
+    issuer: "AWS Academy",
   },
   {
-    title: "Advanced React Concepts",
-    issuer: "Meta",
+    title: "Machine Learning Programme (Citizenship Cohort –1)",
+    issuer: "Barclays",
+  },
+  {
+    title: "Python for Data Science",
+    issuer: "Infosys | SpringBoard",
+  },
+  {
+    title: "AI Python Programming",
+    issuer: "Hope Foundation",
   }
 ];
 
-export const awards = [
+export const awards: Award[] = [
   {
-    title: "Hackathon Participant",
-    description: "Participated in multiple hackathons, showcasing problem-solving and coding skills."
+    title: "Tech Events Participation",
+    description: "Attended and organized various tech events in college to foster a learning environment.",
   },
   {
-    title: "Tech Event Organizer",
-    description: "Attended and organized various tech events in college to foster a learning environment."
+    title: "Hackathon Participation",
+    description: "Participated in multiple hackathons, showcasing problem-solving and coding skills.",
   }
 ];

@@ -1,10 +1,10 @@
 
-import { IconType } from "react-icons/lib";
+import { IconType } from "react-icons";
 import { 
   Code, Database, Binary, Braces, Server, 
   Languages, Globe, Blocks, Cpu, AppWindow,
   Brain, Users, MessageSquare, GitBranch,
-  Construction, Boxes, Coffee, Leaf, DockerIcon
+  Construction, Docker as DockerIcon, Boxes
 } from "lucide-react";
 
 export interface Project {
@@ -20,7 +20,7 @@ export interface Project {
 export interface Skill {
   name: string;
   icon: string;
-  category: 'frontend' | 'backend' | 'web3' | 'design' | 'other' | 'tools' | 'soft';
+  category: 'frontend' | 'backend' | 'web3' | 'design' | 'other';
 }
 
 export interface Education {
@@ -135,17 +135,5 @@ export const certificates = [
   {
     title: "Advanced React Concepts",
     issuer: "Meta",
-  }
-];
-
-// Add the missing awards array
-export const awards = [
-  {
-    title: "Hackathon Participant",
-    description: "Participated in multiple hackathons, showcasing problem-solving and coding skills."
-  },
-  {
-    title: "Tech Event Organizer",
-    description: "Attended and organized various tech events in college to foster a learning environment."
   }
 ];

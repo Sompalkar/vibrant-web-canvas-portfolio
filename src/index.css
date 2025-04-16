@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
 @tailwind base;
@@ -8,25 +9,34 @@
   /* Dark theme (default) */
   :root,
   .dark-mode {
-    --background: 240 35% 7%;
+    --background: 230 35% 7%;
     --foreground: 214 32% 91%;
-    --card: 240 31% 10%;
+
+    --card: 229 31% 10%;
     --card-foreground: 214 32% 91%;
-    --popover: 240 35% 7%;
+
+    --popover: 230 35% 7%;
     --popover-foreground: 214 32% 91%;
-    --primary: 271 81% 65%;
-    --primary-foreground: 240 35% 7%;
-    --secondary: 240 31% 15%;
+
+    --primary: 266 83% 65%; /* Updated to match web3-purple */
+    --primary-foreground: 230 35% 7%;
+
+    --secondary: 229 31% 15%;
     --secondary-foreground: 214 32% 91%;
-    --muted: 240 31% 15%;
+
+    --muted: 229 31% 15%;
     --muted-foreground: 215 16% 65%;
-    --accent: 240 31% 15%;
+
+    --accent: 229 31% 15%;
     --accent-foreground: 214 32% 91%;
+
     --destructive: 0 62% 30%;
     --destructive-foreground: 214 32% 91%;
-    --border: 240 31% 15%;
-    --input: 240 31% 15%;
-    --ring: 271 81% 60%;
+
+    --border: 229 31% 15%;
+    --input: 229 31% 15%;
+    --ring: 266 83% 60%;
+
     --radius: 0.75rem;
   }
 
@@ -74,7 +84,7 @@
   .dark-mode body {
     background-image: 
       radial-gradient(circle at 15% 25%, rgba(139, 92, 246, 0.08) 0%, transparent 45%),
-      radial-gradient(circle at 85% 75%, rgba(124, 58, 237, 0.08) 0%, transparent 45%);
+      radial-gradient(circle at 85% 75%, rgba(236, 72, 153, 0.08) 0%, transparent 45%);
     background-size: 100% 100%, 100% 100%;
   }
 
@@ -290,11 +300,4 @@
   .gradient-text-3 {
     @apply bg-gradient-to-r from-web3-orange to-web3-yellow text-transparent bg-clip-text;
   }
-}
-
-@keyframes blob {
-  0% { transform: translate(0px, 0px) scale(1); }
-  33% { transform: translate(30px, -50px) scale(1.1); }
-  66% { transform: translate(-20px, 20px) scale(0.9); }
-  100% { transform: translate(0px, 0px) scale(1); }
 }

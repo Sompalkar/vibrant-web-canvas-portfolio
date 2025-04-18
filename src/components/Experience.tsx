@@ -2,54 +2,53 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { useInView } from "framer-motion";
-import { BriefcaseBusiness, Calendar, GraduationCap, Award, Star, Coffee, Sparkles, Medal } from "lucide-react";
-import { education, certificates, awards } from "@/utils/data";
+import { BriefcaseBusiness, Calendar, GraduationCap, Award, Star, Coffee, Sparkles } from "lucide-react";
 
 const experiences = [
   {
-    title: "Bachelor In Computer Application",
-    company: "SavitriBai Phule University, Pune",
-    date: "2021 - 2024",
-    description: "CGPA - 9.1",
+    title: "Senior Frontend Developer",
+    company: "Web3 Technologies Inc.",
+    date: "2022 - Present",
+    description: "Leading frontend development for decentralized applications. Implementing responsive UI with React, TypeScript, and Web3 libraries.",
+    icon: BriefcaseBusiness,
+    type: "work",
+    achievements: ["Led team of 5 developers", "Improved app performance by 40%", "Implemented CI/CD pipeline"]
+  },
+  {
+    title: "Frontend Developer",
+    company: "Digital Innovation Labs",
+    date: "2020 - 2022",
+    description: "Developed modern web applications using React and NextJS. Collaborated with UX designers to create intuitive interfaces.",
+    icon: BriefcaseBusiness,
+    type: "work",
+    achievements: ["Built 20+ responsive websites", "Mentored junior developers", "Reduced load time by 30%"]
+  },
+  {
+    title: "Master's in Computer Science",
+    company: "Tech University",
+    date: "2018 - 2020",
+    description: "Specialized in User Experience and Frontend Development. Thesis on improving website accessibility through AI.",
     icon: GraduationCap,
     type: "education",
-    achievements: ["Focused on Computer Science and Applications", "Developed strong foundation in programming and software development"]
+    achievements: ["GPA: 3.9/4.0", "Published 2 research papers", "Won Best Student Project Award"]
   },
   {
-    title: "AWS Academy Graduate",
-    company: "AWS Academy Cloud Foundations",
-    date: "2023",
-    description: "Comprehensive cloud computing certification focusing on AWS services and cloud architecture.",
-    icon: Medal,
-    type: "certificate",
-    achievements: ["Cloud infrastructure management", "Understanding AWS services ecosystem", "Deployment strategies"]
+    title: "Web Development Bootcamp",
+    company: "Code Academy",
+    date: "2018",
+    description: "Intensive 12-week bootcamp focusing on JavaScript, React, and modern frontend technologies.",
+    icon: Award,
+    type: "education",
+    achievements: ["Graduated top of class", "Built 5 full-stack projects", "Selected for mentorship program"]
   },
   {
-    title: "Machine Learning Programme",
-    company: "Barclays (Citizenship Cohort –1)",
-    date: "2022",
-    description: "In-depth training on machine learning concepts, algorithms, and applications in finance.",
-    icon: Medal,
-    type: "certificate",
-    achievements: ["Algorithm implementation", "Data analysis", "Predictive modeling"]
-  },
-  {
-    title: "Python for Data Science",
-    company: "Infosys | SpringBoard",
-    date: "2022",
-    description: "Specialized course on utilizing Python for data manipulation, visualization, and analysis.",
-    icon: Medal,
-    type: "certificate",
-    achievements: ["Data visualization", "Statistical analysis", "Data pipelines"]
-  },
-  {
-    title: "AI Python Programming",
-    company: "Hope Foundation",
-    date: "2022",
-    description: "Training program focused on implementing AI algorithms using Python.",
-    icon: Medal,
-    type: "certificate",
-    achievements: ["Neural networks", "Natural language processing", "Computer vision basics"]
+    title: "Junior Developer",
+    company: "Startup Ventures",
+    date: "2017 - 2018",
+    description: "Built and maintained responsive websites. Implemented designs using HTML, CSS, and JavaScript.",
+    icon: BriefcaseBusiness,
+    type: "work",
+    achievements: ["Developed company website from scratch", "Implemented responsive design system", "Created internal tools"]
   },
 ];
 
@@ -75,16 +74,6 @@ const TimelineItem = ({ experience, index }: { experience: any; index: number })
   const scale = useTransform(scrollYProgress, [0, 0.5], [0.95, 1]);
   const opacity = useTransform(scrollYProgress, [0, 0.3], [0.5, 1]);
 
-  // Determine the color based on the type
-  const getTypeColor = (type: string) => {
-    switch(type) {
-      case 'education': return 'from-web3-blue to-web3-teal';
-      case 'certificate': return 'from-web3-purple to-web3-pink';
-      case 'award': return 'from-web3-orange to-web3-yellow';
-      default: return 'from-web3-purple to-web3-pink';
-    }
-  };
-
   return (
     <motion.div 
       ref={ref}
@@ -95,7 +84,7 @@ const TimelineItem = ({ experience, index }: { experience: any; index: number })
     >
       <div className="timeline-marker">
         <motion.div 
-          className={`absolute w-full h-full bg-gradient-to-r ${getTypeColor(experience.type)} rounded-full`}
+          className="absolute w-full h-full bg-web3-purple rounded-full"
           initial={{ scale: 0 }}
           animate={isInView ? { scale: 1 } : { scale: 0 }}
           transition={{ duration: 0.3, delay: 0.1 * index + 0.3 }}
@@ -115,18 +104,18 @@ const TimelineItem = ({ experience, index }: { experience: any; index: number })
           }}
         >
           {/* Background glow effect */}
-          <div className={`absolute -top-10 -right-10 w-20 h-20 bg-gradient-to-r ${getTypeColor(experience.type)} rounded-full blur-3xl opacity-20`}></div>
+          <div className="absolute -top-10 -right-10 w-20 h-20 bg-web3-purple/20 rounded-full blur-2xl"></div>
           
           <div className="flex items-center mb-3">
-            <div className={`p-2 rounded-full bg-gradient-to-r ${getTypeColor(experience.type)} bg-opacity-10 mr-3`}>
-              <experience.icon className={`h-5 w-5 ${experience.type === 'education' ? 'text-web3-blue' : experience.type === 'certificate' ? 'text-web3-purple' : 'text-web3-orange'}`} />
+            <div className="p-2 rounded-full bg-web3-purple/10 mr-3">
+              <experience.icon className="h-5 w-5 text-web3-purple" />
             </div>
             <h3 className="font-bold text-lg">{experience.title}</h3>
           </div>
           
           <div className="mb-3">
             <div className="text-sm text-muted-foreground flex items-center">
-              <span className={`font-medium ${experience.type === 'education' ? 'text-web3-blue' : experience.type === 'certificate' ? 'text-web3-purple' : 'text-web3-orange'}`}>
+              <span className={`font-medium ${experience.type === 'work' ? 'text-web3-pink' : 'text-web3-blue'}`}>
                 {experience.company}
               </span>
             </div>
@@ -167,10 +156,10 @@ const Experience = () => {
           transition={{ duration: 0.5 }}
         >
           <h2 className="text-2xl md:text-3xl font-bold mb-4">
-            <span className="text-gradient">Education & Certifications</span>
+            <span className="text-gradient">Experience & Education</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            My educational background and professional certifications that shaped my expertise
+            My professional journey and educational background that shaped my expertise
           </p>
         </motion.div>
         
@@ -185,39 +174,6 @@ const Experience = () => {
           {experiences.map((experience, index) => (
             <TimelineItem key={index} experience={experience} index={index} />
           ))}
-          
-          {/* Awards Section */}
-          <motion.div 
-            className="mt-24 text-center"
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-          >
-            <h2 className="text-2xl md:text-3xl font-bold mb-8">
-              <span className="text-gradient-alt">Awards & Achievements</span>
-            </h2>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
-              {awards.map((award, idx) => (
-                <motion.div
-                  key={idx}
-                  className="glass p-6 rounded-lg hover-lift"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                  transition={{ duration: 0.5, delay: 0.1 * idx + 0.4 }}
-                  whileHover={{ y: -5, boxShadow: "0 10px 25px -5px rgba(249, 115, 22, 0.3)" }}
-                >
-                  <div className="flex items-center mb-3">
-                    <div className="p-2 rounded-full bg-web3-orange/10 mr-3">
-                      <Award className="h-5 w-5 text-web3-orange" />
-                    </div>
-                    <h3 className="font-bold text-lg">{award.title}</h3>
-                  </div>
-                  <p className="text-sm text-muted-foreground">{award.description}</p>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
         </div>
       </div>
     </section>

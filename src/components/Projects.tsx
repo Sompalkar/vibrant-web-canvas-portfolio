@@ -14,7 +14,6 @@ const Projects = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.1 });
   
-  // Extract all unique tags from projects
   const categories = Array.from(
     new Set(projects.flatMap(project => project.tags))
   );
@@ -58,7 +57,7 @@ const Projects = () => {
             <span className="text-gradient">Featured Projects</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            A selection of my recent work showcasing my expertise in full-stack development
+            A selection of my recent work showcasing my expertise in modern web development
           </p>
         </motion.div>
         
@@ -104,7 +103,6 @@ const Projects = () => {
               onHoverStart={() => setHoveredIndex(index)}
               onHoverEnd={() => setHoveredIndex(null)}
               whileHover={{ y: -8, transition: { duration: 0.2 } }}
-              className="h-full"
             >
               <Card className="glass hover:shadow-glow transition-all duration-300 group overflow-hidden border-white/5 hover:border-web3-purple/30 h-full flex flex-col">
                 <div className="relative overflow-hidden h-48">
@@ -125,23 +123,10 @@ const Projects = () => {
                       }}
                       transition={{ duration: 0.2 }}
                     >
-                      {project.liveUrl && (
-                        <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
-                          <Button variant="secondary" size="sm" className="bg-background/80 backdrop-blur-md mr-2">
-                            Live Demo
-                            <ExternalLink className="ml-1 h-3 w-3" />
-                          </Button>
-                        </a>
-                      )}
-                      
-                      {project.githubUrl && (
-                        <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
-                          <Button variant="secondary" size="sm" className="bg-background/80 backdrop-blur-md">
-                            View Code
-                            <Github className="ml-1 h-3 w-3" />
-                          </Button>
-                        </a>
-                      )}
+                      <Button variant="secondary" size="sm" className="bg-background/80 backdrop-blur-md">
+                        View Details
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </Button>
                     </motion.div>
                   </motion.div>
                   
@@ -196,8 +181,7 @@ const Projects = () => {
                   </div>
                   
                   <Button size="sm" variant="outline" className="border-web3-purple/30 hover:border-web3-purple hover:bg-web3-purple/10 hover-lift">
-                    Details
-                    <ArrowRight className="ml-1 h-3 w-3" />
+                    View Details
                   </Button>
                 </CardFooter>
               </Card>

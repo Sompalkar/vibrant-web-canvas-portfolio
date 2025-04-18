@@ -84,10 +84,11 @@ const Navbar = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.3 }}
           >
-            {/* Replace Button with motion.button for theme toggle */}
-            <motion.button 
-              className="hover:bg-primary/10 relative overflow-hidden inline-flex items-center justify-center h-10 w-10 rounded-md"
+            <Button 
+              variant="ghost" 
+              size="icon" 
               onClick={toggleTheme}
+              className="hover:bg-primary/10 relative overflow-hidden"
               aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
               whileHover={{ scale: 1.1, rotate: 5 }}
               whileTap={{ scale: 0.9 }}
@@ -115,7 +116,7 @@ const Navbar = () => {
                   </motion.div>
                 )}
               </AnimatePresence>
-            </motion.button>
+            </Button>
           </motion.div>
           
           {/* Mobile Menu Button */}
@@ -125,10 +126,11 @@ const Navbar = () => {
             transition={{ duration: 0.3, delay: 0.2 }}
             className="md:hidden"
           >
-            {/* Replace Button with motion.button for mobile menu */}
-            <motion.button 
-              className="hover:bg-primary/10 inline-flex items-center justify-center h-10 w-10 rounded-md"
+            <Button 
+              variant="ghost" 
+              size="icon" 
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="hover:bg-primary/10"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
             >
@@ -155,7 +157,7 @@ const Navbar = () => {
                   </motion.div>
                 )}
               </AnimatePresence>
-            </motion.button>
+            </Button>
           </motion.div>
         </div>
       </div>
